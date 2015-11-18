@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles%}
+<head>
+  <title>添加作者</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">  
+  <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+    <body> 
+       <style>
+            .nav {margin:0 auto;width:100%;text-align:center;bgcolor = black;}
+            ul li{list-style:none;float:left;margin-left:20px;}
+            .alsp{ font-family:"楷体"; font-size:35px; font:60px; color:#FFF7FB; }
+            .divcss5{ background:rgb(49, 75, 47); width:100%} 
+            .d5{ background:rgb(49, 75, 47); width:100%} 
+        </style>
+        <nav class="nav nav-tabs " role="navigation" style="bgcolor:black;">
+           <div class="navbar-header d5">
+              <a class="navbar-brand alsp" href="/"><strong>图书数据库<strong/></a>
+           </div>
+           <div>
+              <ul class="nav navbar-nav" >
+                 <li class="success" ><a href="/addauthor/"><span class="glyphicon glyphicon-user" style="color: rgb(49, 105, 46); font-size: 14px;"> 添加作者<span/></a></li>
+                 <li class="success" ><a href="/addbook/"><span class="glyphicon glyphicon-book" style="color: rgb(49, 105, 46); font-size: 14px;">添加图书<span/></a></li>
+                 <li class="success" ><a href="/search/"><span class="glyphicon glyphicon-search" style="color: rgb(49, 105, 46); font-size: 14px;">查找作者<span/></a></li>
+              </ul>
+           </div>
+        </nav>
+      
+    <form action="/saveauthor/" method="post" class="form-horizontal" role="form">
+    {% csrf_token %}
+
+        <br />
+       <div class="form-group">
+          <label for="author_ID" class="col-sm-2 control-label">作者姓ID</label>
+          <div class="col-sm-2">
+             <input type="text" class="form-control" id="author_ID" name="author_ID" 
+                placeholder="请输入作者ID">
+          </div>
+       </div>
+
+       <div class="form-group">
+          <label for="author_name" class="col-sm-2 control-label">作者姓名</label>
+          <div class="col-sm-2">
+             <input type="text" class="form-control" id="author_name" name="author_name" 
+                placeholder="请输入姓名">
+          </div>
+       </div>
+
+       <div class="form-group">
+          <label for="author_age" class="col-sm-2 control-label">作者年龄</label>
+          <div class="col-sm-2">
+             <input type="text" class="form-control" id="author_age" name="author_age" 
+                placeholder="请输入作者年龄">
+          </div>
+       </div>
+
+       <div class="form-group">
+          <label for="author_country" class="col-sm-2 control-label">作者国家</label>
+          <div class="col-sm-2">
+             <input type="text" class="form-control" id="author_country" name="author_country" 
+                placeholder="请输入作者国家">
+          </div>
+       </div>
+
+       <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+             <button type="submit" class="btn btn-default">保存</button>
+          </div>
+       </div>
+
+    </form>
+
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles%}
+<head>
+  <title>{{book.Title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">  
+  <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+    <body>
+
+        <style>
+            .nav {margin:0 auto;width:100%;text-align:center;bgcolor = black;}
+            ul li{list-style:none;float:left;margin-left:20px;}
+            .alsp{ font-family:"楷体"; font-size:35px; font:60px; color:#FFF7FB; }
+            .divcss5{ background:rgb(49, 75, 47); width:100%} 
+            .d5{ background:rgb(49, 75, 47); width:100%} 
+        </style>
+        <nav class="nav nav-tabs " role="navigation" style="bgcolor:black;">
+           <div class="navbar-header d5">
+              <a class="navbar-brand alsp" href="/"><strong>图书数据库<strong/></a>
+           </div>
+           <div>
+              <ul class="nav navbar-nav" >
+                 <li class="success" ><a href="/addauthor/"><span class="glyphicon glyphicon-user" style="color: rgb(49, 105, 46); font-size: 14px;"> 添加作者<span/></a></li>
+                 <li class="success" ><a href="/addbook/"><span class="glyphicon glyphicon-book" style="color: rgb(49, 105, 46); font-size: 14px;">添加图书<span/></a></li>
+                 <li class="success" ><a href="/search/"><span class="glyphicon glyphicon-search" style="color: rgb(49, 105, 46); font-size: 14px;">查找作者<span/></a></li>
+              </ul>
+           </div>
+        </nav>
+    <div class="table-responsive">
+      <h2>《{{book.Title}}》的基本信息</h2>         
+      <table class="table">
+        <tbody>
+          <tr class = "active">
+            <td>ISBN</td>
+            <td>{{book.ISBN}}</td>
+          </tr>
+          <tr class = "success">
+            <td>作者姓名</td>
+            <td>{{book.AuthorID.Name}}</td>
+          </tr>
+          <tr class = "active">
+            <td>出版商</td>
+            <td>{{book.Publisher}}</td>
+          </tr>
+          <tr class = "success">
+            <td>出版日期</td>
+            <td>{{book.PublishDate}}</td>
+          </tr>
+          <tr class = "active">
+            <td>价格</td>
+            <td>{{book.Price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </body>
+</html>

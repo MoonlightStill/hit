@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles%}
+<head>
+  <title>图书数据库</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">  
+  <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+    <body background="/bg.jpg">
+        <style>
+            .nav {margin:0 auto;width:100%;text-align:center;bgcolor = black;}
+            ul li{list-style:none;float:left;margin-left:20px;}
+            .alsp{ font-family:"楷体"; font-size:35px; font:60px; color:#FFF7FB; }
+            .divcss5{ background:rgb(49, 75, 47); width:100%} 
+            .d5{ background:rgb(49, 75, 47); width:100%} 
+        </style>
+        <nav class="nav nav-tabs " role="navigation" style="bgcolor:black;">
+           <div class="navbar-header d5">
+              <a class="navbar-brand alsp" href="/"><strong>图书数据库<strong/></a>
+           </div>
+           <div>
+              <ul class="nav navbar-nav" >
+                 <li class="success" ><a href="/addauthor/"><span class="glyphicon glyphicon-user" style="color: rgb(49, 105, 46); font-size: 14px;"> 添加作者<span/></a></li>
+                 <li class="success" ><a href="/addbook/"><span class="glyphicon glyphicon-book" style="color: rgb(49, 105, 46); font-size: 14px;">添加图书<span/></a></li>
+                 <li class="success" ><a href="/search/"><span class="glyphicon glyphicon-search" style="color: rgb(49, 105, 46); font-size: 14px;">查找作者<span/></a></li>
+              </ul>
+           </div>
+        </nav>
+        <br />
+        <br />
+        {% if book_list %}
+            <table class="table table-bordered" style="width:50% ;text-align:center">
+            <tbody >
+            {% for b in book_list %}
+                {%url "showbook" b.ISBN as detail_url %}
+                {%url "delete" b.ISBN as delete_url %}
+                {%url "refresh" b.ISBN as refresh_url %}
+                
+                    
+                      <tr class = "active">
+                        <td ><a href="{{detail_url}}">{{b.Title}}</td>
+                        <td ><a href="{{delete_url}}">删除</td>
+                        <td ><a href="{{refresh_url}}">更新</td>
+                      </tr>
+                    
+
+            {% endfor %}
+            <tbody />
+            <table />
+        {% endif %}
+
+    </body>
+</html>
